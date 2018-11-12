@@ -66,6 +66,7 @@ des types des champs (texte, numérique).
 - supprimer les objets contenant au moins une valeur manquante.
 
 =============================================================================
+COMMENTS
 
 On peut utiliser plusieurs jeux de données différents pour clustering et classification supervisée.
 
@@ -81,3 +82,8 @@ Attention : on a des données manquantes.
 Conseil : choisir des attributs qui nous "parlent", pas trop pointus (pour éviter les trous).
 Choisir un 1er jeu volumineux, puis filtrer (Python).
 On peut changer d'avis pour les jeux.
+
+=============================================================================
+LIVRABLE
+
+CR iPython. Les ccl peuvent être négatives (ça n'a pas marché)
