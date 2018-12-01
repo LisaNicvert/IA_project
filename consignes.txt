@@ -1,0 +1,164 @@
+CONSIGNES 
+
+SUGGESTION DE CONTENU POUR L'ETUDE
+
+
+Choix d'attributs
+=================
+
+
+* Ecarter les attributs semblant redondants car corrélés.
+
+* Utiliser des attributs dérivés pour faire apparaître des attributs pouvant être plus pertinents (valeur relative, ratio, différence, ...).
+
+* Choisir des dimensions privilégiées pour cibler l'étude et/ou simplifier les interprétations. Pour les méthodes utilisant des calculs de distances réduire à pas plus de 4 à 6 dimensions, et standardiser les données si nécessaire.
+
+
+Remarque:
+
+- Il est possible de compléter le jeu par d'autres sources.
+
+
+Choix des objets
+================
+
+
+* Ecarter les objets comportant des valeurs manquantes (sauf si l'on utilise des outils qui gèrent les valeurs manquantes).
+
+* Consigner (et éventuellement écarter) les outliers (individus hors norme, bruit ...), en 1D, 2D, n-dimensions.
+
+
+Clustering
+==========
+
+
+* Rechercher des clusters de forme arbitraire et de forme ellipsoïdale en essayant notamment Kmeans et la méthode hiérarchique "COMPLETE" et DBSCAN.
+
+* Calculer des dendrogrammes.
+
+* Choisir le nombre de clusters (courbe de SSE et/ou coefficient silhouette).
+
+* Etudier la stabilité de la convergence de K-means.
+
+* Comparer (par calcul d'entropie et par table de contingence) le contenu des clusters obtenus avec un étiquetage connu ou avec un autre clustering.
+
+* Réaliser une description des enveloppes des clusters a posteriori en construisant un arbre de décision (sur un jeu ayant au moins 4 dimensions).
+
+
+Remarques:
+
+- Ecarter des outliers peut améliorer la stabilité et les mesures de dispersion.
+
+- On peut évaluer le clustering en comparant la valeur de SSE ou de coefficient silhouette aux valeurs sur jeu aléatoire.
+
+
+Classification
+==============
+
+
+* Construire un label par discrétisation (ce label peut se construire par clustering sur un attribut). Utiliser ce label comme étiquette de classe.
+
+* Comparer les performances obtenues entre des modèles basés sur des arbres de décision et la méthode des K plus proches voisins.
+
+* Evaluer la qualité des modèles par validation croisée. (Indiquer les scores pour chaque sous-jeu test et le score global)
+
+* Modifier les paramètres d'apprentissage pour détecter/limiter un éventuel sur-apprentissage.
+
+
+Remarques:
+
+- une table de contingence peut permettre d'analyser les erreurs par classe.
+
+- Ecarter des outliers peut réduire le taux d'erreurs.
+
+- Le modèle de classification obtenu peut permettre de prédire la valeur de l'étiquette pour l'attribut cible sur des objets pour lesquels cette valeur d'attribut est manquante.
+
+
+Compte rendu
+============
+
+
+* Indiquer les choix faits.
+
+* Indiquer les commandes et les paramètres pour que les manipulations soient reproductibles.
+
+* Donner les résultats chiffres/graphiques (mais pas d'affichage complet des tableaux de données dans le compte rendu).
+
+* Essayer d'interpréter les résultats.
+
+
+Remarques:
+
+- Il est possible d'étudier plusieurs sous-ensembles d'attributs.
+
+- Il est possible de suggérer/consigner des pistes pour la poursuite du travail (pistes que l'on n'a pas le temps d'explorer pour le moment)
+
+
+
+Documents à rendre par mail (Christophe.Rigotti@insa-lyon.fr et Sergio.Peignier@insa-lyon.fr)
+===========================
+
+Un dossier aux noms du binôme (par ordre alphabetique) NOM1_NOM2
+rendu sous forme zip NOM1_NOM2.zip
+
+Ce dossier contiendra:
+
+- le pdf du rapport. Ce pdf peut être généré en exportant en pdf un notebook jupyter, mais en veillant à ce que la fenêtre du notebook avant exportation ne soit pas trop large, car sinon les lignes de commandes longues sont coupées.
+
+- le ou les fichiers (format txt) des données (utilisables pour reproduire l'étude). Ces fichiers seront eux-même des zip.
+
+- le ou les fichiers (format txt ou pdf) des définitions des variables.
+
+- le ou les notebooks jupyter (format .ipynb) permettant de ré-exécuter les traitements.
+
+
+================================================
+Rappel de quelques points utiles à garder à l'esprit dans un travail exploratoire lors de l'utilisation de techniques de data mining.
+
+-------------------------------------------
+Dans toutes les étapes:
+
+
+- sélection d'attributs et réduction du nombre de dimensions (attributs corrélés, pertinents, redondants, groupes d'attributs intéressants).
+- agrégation des données (par intervalles, par cumul de variables, par cumul sur groupes d'objets) ?
+- valeurs manquantes (supprimer attributs ou objets ? valeurs manquantes prises en comptes par les méthodes ? fournir/calculer des valeurs "par défaut" ?)
+- discrétisation (par intervalles, par clustering, par rapport à un label de classe)
+- identifier et consigner les outliers en 1D (boxplot), 2D (scatter matrix) et plus de 2D (par clustering, notamment méthode hiérarchique single ou clustering par densité type DBSCAN). Ecarter/garder/étudier les outliers.
+- erreurs dans les données ?
+- envisager le calcul d'attributs dérivés.
+
+
+-------------------------------------------
+Visualisation, ne pas sous-estimer les possibilités de:
+
+
+- boxplot, scatter matrix, parallel coordinates
+
+
+-------------------------------------------
+Clustering:
+
+
+- "standardisation", réduction du nombre de dimensions.
+- type de distance, type de valeurs supportés.
+- nombre de clusters (déterminé sur dendrogramme/courbe de distance, ou sur courbe SSE ou coefficient silhouette vs nombre de clusters)
+- forme des clusters (sphérique/ellipsoïde/contour).
+- visualiser les clusters (attributs de forme, taille et couleur).
+- évaluation:
+ - si étiquetage manuel partiel ou étiquettes connues, évaluation par table de contingence et/ou mesure d'entropie.
+ - stabilité (pour les méthodes non-déterministes).
+ - mesure vs mesure sur jeu aléatoire (distribution de la mesure, capture-t-on une structure ?)
+- décrire les clusters par classification (à partir des attributs utilisés pour le clustering).
+
+
+-------------------------------------------
+Classification:
+
+
+- "standardisation" et réduction du nombre de dimensions pour les méthodes basées sur une distance (e.g., KNN).
+- vérifier les types d'attributs supportés par les méthodes utilisées (support des attributs continus, support des valeurs manquantes ...)
+- évaluation: taux d'erreur, précision, rappel, stabilité de la qualité vs choix des objets d'apprentissage par cross validation.
+- partition jeu apprentissage / jeu test: échantillonnage stratifié par rapport à un label de classe, influence de la taille du jeu d'apprentissage sur la qualité.
+- possibilité d'utiliser un label de classe issu de la discrétisation d'un attribut numérique.
+- overfitting ? (si c'est le cas, pour KNN essayer d'augmenter le nombre de voisins pris en compte et ne pas pondérer avec la distance, pour un arbre de décision augmenter l'effectif minimal devant être conservé au niveau des feuilles, ou encore utiliser le critère de "gain ratio")
+- quels sont les objets posant un problème pour la classification ? (points erronés ? outliers ? manque d'expressivité du modèle de classification construit ? informations nécessaires à la classification non présentes ?)
